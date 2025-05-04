@@ -11,7 +11,7 @@ test('can create user', function () {
     $count = User::count();
 
     $response = $this->postJson('api/users', [
-        'email' => 'test@example.com',
+        'email' => fake()->unique()->safeEmail(),
         'password' => 'password',
         'password_confirmation' => 'password',
         'first_name' => 'John',

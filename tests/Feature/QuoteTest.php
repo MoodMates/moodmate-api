@@ -25,6 +25,11 @@ test('can create quote', function () {
 
     $response->assertStatus(201)
         ->assertJsonStructure(['id', 'quote_text', 'user_id', 'created_at', 'updated_at']);
+
+    $this->assertDatabaseHas('quotes', [
+        'quote_text' => 'This is a test quote.',
+        'user_id' => $user->id,
+    ]);
 });
 
 test('can show quote', function () {
